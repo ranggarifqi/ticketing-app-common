@@ -4,8 +4,8 @@ interface Color {
 }
 
 const color: Color = {
-  red: 1,
-  blue: 2,
+  red: 12,
+  blue: 22,
 };
 
 console.log(color);
