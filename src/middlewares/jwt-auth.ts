@@ -2,16 +2,23 @@ import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 
 import { UnauthorizedError } from "../errors/unauthorized-error";
-import { ErrorResponse } from "../responses/error";
 
 export interface UserJWTPayload {
   id: string;
   email: string;
 }
 
+declare global {
+  namespace Express {
+    interface Request {
+      currentUser?: UserJWTPayload;
+    }
+  }
+}
+
 export const jwtAuth = (
   req: Request,
-  res: Response<ErrorResponse>,
+  res: Response,
   next: NextFunction
 ) => {
   if (!req.session?.jwt) {
