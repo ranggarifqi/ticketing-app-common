@@ -1,4 +1,4 @@
-import { CustomError } from ".";
+import { CustomError } from "./index";
 import { ErrorResponse } from "../responses/error";
 
 export class BadRequestError extends CustomError {
