@@ -1,4 +1,4 @@
-import { CustomError } from ".";
+import { CustomError } from "./custom-error";
 import { ErrorResponse } from "../responses/error";
 
 const REASON = "Error connecting to database";
