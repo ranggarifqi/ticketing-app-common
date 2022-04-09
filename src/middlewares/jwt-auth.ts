@@ -4,6 +4,11 @@ import jwt from "jsonwebtoken";
 import { UnauthorizedError } from "../errors/unauthorized-error";
 import { ErrorResponse } from "../responses/error";
 
+export interface UserJWTPayload {
+  id: string;
+  email: string;
+}
+
 export const jwtAuth = (
   req: Request,
   res: Response<ErrorResponse>,
@@ -14,7 +19,11 @@ export const jwtAuth = (
   }
 
   try {
-    const payload = jwt.verify(req.session.jwt, process.env.JWT_SECRET!);
+    const payload = jwt.verify(
+      req.session.jwt,
+      process.env.JWT_SECRET!
+    ) as UserJWTPayload;
+
     req.currentUser = payload;
   } catch (error) {
     throw new UnauthorizedError();

@@ -1,5 +1,5 @@
 import { Request } from "express";
-import { UserJWTPayload } from "../../../models/User";
+import { UserJWTPayload } from "../../middlewares/jwt-auth";
 
 declare global {
   namespace Express {
