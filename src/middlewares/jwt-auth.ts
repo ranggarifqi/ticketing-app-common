@@ -1,23 +1,16 @@
-import { Request, Response, NextFunction } from "express";
+import { Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 
 import { UnauthorizedError } from "../errors/unauthorized-error";
+import { RequestWithCredential } from "../requests";
 
 export interface UserJWTPayload {
   id: string;
   email: string;
 }
 
-declare global {
-  namespace Express {
-    interface Request {
-      currentUser?: UserJWTPayload;
-    }
-  }
-}
-
 export const jwtAuth = (
-  req: Request,
+  req: RequestWithCredential,
   res: Response,
   next: NextFunction
 ) => {
