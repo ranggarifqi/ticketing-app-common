@@ -12,6 +12,7 @@ export const errorHandler = (
     return res.status(err.statusCode).send(err.serializeError());
   }
 
+  console.error(err);
   return res.status(500).send({
     errors: [
       {
